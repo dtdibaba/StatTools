@@ -1,0 +1,56 @@
+<style>
+  table {border-collapse:collapse;
+  border:none;
+  float:initial;}
+  
+  .flat-table {
+    display: block;
+    font-family: sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 115%;
+    overflow: auto;
+    width: 50%;
+    padding: 0.5cm;
+    float:initial;
+  }
+ 
+ 
+  thead,firsttablerow {
+    border-top: solid;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    font-weight: normal;
+    font-style:normal;
+    padding: 0.5cm;
+    text-align: center;
+    border-bottom: double;
+    width: 50%;
+    float:initial;
+    
+  }
+ 
+  tbody,lasttablerow {
+    background-color: rgb(255, 255, 255);
+    color: black
+    padding: 0.5cm;
+    border-bottom: solid; 
+    width: 50%;
+    height: auto;
+    text-align:left;
+    vertical-align:top;
+    float:initial;
+    
+  }
+  
+  leftalign { 
+  text-align:left; }
+  
+  tfoot {
+  border-bottom: double;
+    background-color: rgb(255, 255, 255);
+    color: black;
+   
+  
+  }
+ 
+</style>

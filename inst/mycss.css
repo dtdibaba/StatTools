@@ -1,0 +1,42 @@
+table {
+  boder-collapse: collapse;
+  border: none;
+  float: initial;
+}
+
+.float-table {
+  display: block;
+  font-family: san-serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 115%;
+  overflow: auto;
+  width: 50%;
+  padding: 0.5cm;
+  float: initial;
+}
+
+thead,firsttablerow {
+  boder-top: solid;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  font-weigtht: normal;
+  font-style: normal;
+  pandding: 0.5cm;
+  text-align: center;
+  veritical-align: top;
+  boder-bottom: double;
+  width: 50%;
+  float: initial;
+}
+
+tbody, lasttablerow {
+  background-color: rgb(255, 255, 255);
+  color: black;
+  padding: 0.5cm;
+  border-bottom: solid;
+  width: 50%;
+  height: auto;
+  text-align: left;
+  vertical-align: top;
+  float: initial;
+}
