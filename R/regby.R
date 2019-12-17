@@ -33,9 +33,9 @@
 #' @param colname lists of the column header names. 
 #' @param Model The regression function name such as lm, glm, coxph. 
 #' @param ...  Expandable. 
-#' @return Invisibly returns           
+#' @return returns           
 #'  \itemize{           
-#'  \item the web page stylesheet (\code{page.style}) } 
+#'  knitr table} 
 #' @importFrom survival coxph 
 #' @importFrom survival Surv
 #' @importFrom MASS polr 
@@ -410,12 +410,10 @@ regby <- function(datain,
     colnames(Result)<-colname
   }
   
-  requireNamespace("tableHTML", quietly=TRUE)
-  mycss<-tableHTML::make_css(list("thead,tr, th", c("border-top", "border-bottom"), c("1px double solid", "1px double broken") ))
   
   #Create the table
   requireNamespace("kableExtra")
-  result <- kable(Result,format = "html", padding = 0, row.names = FALSE, full_width=FALSE, css =mycss)%>%kable_styling(full_width =FALSE, position="left")
+  result <- kable(Result,format = "html", padding = 0, row.names = FALSE, full_width=FALSE)%>%kable_styling(full_width =FALSE, position="left")
   
   #requireNamespace("htmlTable", quietly=TRUE)
   #result<-htmlTable(Result,rnames=FALSE, css.cell=matrix("padding-left:1em", nrow=nrow   (Result)+1, ncol=ncol(Result)))
