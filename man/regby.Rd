@@ -54,15 +54,11 @@ defaults to TRUE.}
 \item{col.names}{Whether the user wants to rename column
 names. Default=TRUE.}
 
-\item{colname}{lists of the column header names.}
+\item{colname}{Lists of the column header names.}
 
 \item{...}{Expandable.}
 }
-\value{
-Invisibly returns           
- \itemize{           
- \item the web page stylesheet (\code{page.style}) }
-}
+\value{returns knitr table.}
 \description{
 This function helps to extract the important
 regression summaries such as coefficients, confidence intervals, and P-value

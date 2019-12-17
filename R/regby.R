@@ -30,6 +30,7 @@
 #' @param EXP Whether you want the exponentiation of the estimate and CIs. EXP
 #' defaults to TRUE.
 #' @param col.names Whether the user wants to rename column
+<<<<<<< HEAD
 #' names. Default=TRUE.
 #' @param colname lists of the column header names.
 #' @param Model The regression function name such as lm, glm, coxph.
@@ -38,6 +39,16 @@
 #'  \itemize{
 #'  \item table output }
 #' @importFrom survival coxph
+=======
+#' names. Default=TRUE. 
+#' @param colname lists of the column header names. 
+#' @param Model The regression function name such as lm, glm, coxph. 
+#' @param ...  Expandable. 
+#' @return returns           
+#'  \itemize{           
+#'  knitr table} 
+#' @importFrom survival coxph 
+>>>>>>> 50a2f806e6f9903a62f77415e87d10044df53c84
 #' @importFrom survival Surv
 #' @importFrom MASS polr
 #' @importFrom nnet multinom
@@ -410,6 +421,7 @@ regby <- function(datain,
   if(col.names==TRUE){
     colnames(Result)<-colname
   }
+<<<<<<< HEAD
 
   requireNamespace("tableHTML", quietly=TRUE)
   mycss<-tableHTML::make_css(list("thead,tr, th", c("border-top", "border-bottom"), c("1px double solid", "1px double broken") ))
@@ -421,6 +433,17 @@ regby <- function(datain,
   requireNamespace("htmlTable", quietly=TRUE)
   result<-htmlTable(Result,rnames=FALSE, css.cell=matrix("padding-left:1em", nrow=nrow   (Result)+1, ncol=ncol(Result)))
 
+=======
+  
+  
+  #Create the table
+  requireNamespace("kableExtra")
+  result <- kable(Result,format = "html", padding = 0, row.names = FALSE, full_width=FALSE)%>%kable_styling(full_width =FALSE, position="left")
+  
+  #requireNamespace("htmlTable", quietly=TRUE)
+  #result<-htmlTable(Result,rnames=FALSE, css.cell=matrix("padding-left:1em", nrow=nrow   (Result)+1, ncol=ncol(Result)))
+  
+>>>>>>> 50a2f806e6f9903a62f77415e87d10044df53c84
   #Hide the message html style printed to R console
 
   #sink("tmpfile")
