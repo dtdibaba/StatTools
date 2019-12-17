@@ -1,0 +1,11 @@
+---
+output: 
+  html_document
+---
+
+```{r, comment=""}
+library(knitr)
+knit_rd("StatTools")
+
+```
+
