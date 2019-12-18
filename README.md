@@ -61,7 +61,7 @@ lists of the column header names.
 
 
 # EXAMPLES
-# Logistic regression analysis with a continuous and Categorical predictors, and intercept not requested 
+# Logistic regression analysis with a continuous and categorical predictors, and intercept not requested 
  
 
 library(StatTools)<br>
@@ -85,7 +85,7 @@ data1<-data.frame(x=x,z=z, Cat=Cat, y=y ) <br>
  "Zc", "Zd"),  colname=c("Strata", "Variable", "OR(95%CIs)", "P-value" ),<br>
  Factor=TRUE, Intercept=FALSE, EXP=TRUE)<br>
 
-# Multiple Linear regression analysis with a continuous and Categorical predictors, and intercept included
+# Multiple Linear regression analysis with a continuous and categorical predictors, and intercept included
  
 
 regby(datain=data1, byVar='Cat', frmlYX=formula(y~x+z), fam=guassian,<br>
