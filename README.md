@@ -61,6 +61,10 @@ lists of the column header names.
 
 
 # EXAMPLES
+
+devtools::install_github("dtdibaba/StatTools")
+library(StatTools)
+
 # Logistic regression analysis with a continuous and categorical predictors, and intercept not requested 
  
 
