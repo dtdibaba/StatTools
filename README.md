@@ -58,3 +58,94 @@ colname <br>
 lists of the column header names.
 
 … Expandable.
+
+
+# EXAMPLES
+# Logistic regression analysis with a continuous and Categorical predictors, and intercept not requested 
+ 
+
+library(StatTools)
+set.seed(123896) 
+requireNamespace("htmlTable",quietly=TRUE)
+x=rnorm(100) 
+z=sample(letters[1:4], 100, TRUE) 
+R<-c('B', 'W') 
+Cat<-sample(R, 100, TRUE) 
+y=rbinom(100, 1, 0.5) 
+data1<-data.frame(x=x,z=z, Cat=Cat, y=y ) 
+
+
+#If Factor==TRUE include the level labels of the predictor as separate names.
+ regby(datain=data1, byVar='Cat',
+ frmlYX=formula(y~x+z), 
+ fam=binomial, 
+ Model="glm", 
+ Pred=c("Intercept",
+  "X","Zb",
+ "Zc", "Zd"),  colname=c("Strata", "Variable", "OR(95%CIs)", "P-value" ),
+ Factor=TRUE, Intercept=FALSE, EXP=TRUE)
+
+# Multiple Linear regression analysis with a continuous and Categorical predictors, and intercept included
+ 
+
+regby(datain=data1, byVar='Cat', frmlYX=formula(y~x+z), fam=guassian,
+Model="lm",Pred=c("Intercept", "X","Zb", "Zc", "Zd"), 
+colname=c("Strata", "Variable", "Beta (95%CIs)", "P-value" ), 
+Factor=TRUE, Intercept=TRUE, EXP=FALSE)
+
+
+regby(datain=mtcars, byVar='cyl', frmlYX=formula(disp~factor(gear)+factor(am)+vs), fam=guassian,
+      Model="lm",Pred=NULL, 
+      colname=c("Strata", "Variable", "Beta (95%CIs)", "P-value" ), 
+      Factor=TRUE, Intercept=TRUE, EXP=FALSE)
+
+<br><br>
+
+# Cox proportional hazard regression analysis with a continuous predictor
+
+ 
+
+set.seed(1243567)
+t<-rnorm(100, 15, 3)
+y<-rbinom(100, 1, 0.5)
+Cat<-sample(c("M", "F"), 100, TRUE)
+x<-rnorm(100, 5, 2)
+z<-rpois(100,1)
+z<-factor(z)
+data2<-data.frame(t=t, x=x, Cat=Cat, y=y,z)
+require('survival')
+
+regby(datain=data2, byVar='Cat', frmlYX=formula(Surv(t,y)~x),
+Model="coxph", Pred=c( "X"),  colname=c("Strata", "Variable", 
+"HR (95%CIs)", "P-value" ), Factor=TRUE, Intercept=FALSE)
+
+ <br><br>
+
+# Proportional Odds Ordered Logistic Regression
+ 
+ x<-rnorm(50)
+ z<-sample(c(letters[1:5]), 50, TRUE)
+ Cat<-sample(R, 50, TRUE)
+ y<-rbinom(50, 1, 0.5)
+ data3<-data.frame(x=x, z=z, Cat=Cat, y=y)
+
+ regby(datain=data3, byVar='Cat', frmlYX=formula(z~x), Model="polr", 
+  colname=c("Strata", "Variable", "Beta (95%CIs)", "P-value", 
+  "Cum_Prob", "OR" ), Factor=TRUE, Intercept=FALSE, col.names = TRUE)
+
+<br><br>
+
+# Multinomial Logistic Regression
+
+ regby(datain=data3, byVar='Cat',  frmlYX=(z~x), Model = "multinom",  
+ colname=c("Strata", "Variable", "OR (95%CIs)", "P-value" ), Factor=TRUE, 
+ Intercept=FALSE)
+
+<br><br>
+
+# Linear Mixed Effect Models
+ 
+ regby(datain=data3, byVar='Cat',  frmlYX=(x~y+(1|z)), Model = "lmer", 
+ col.names = FALSE)
+
+<br><br>
