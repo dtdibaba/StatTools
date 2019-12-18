@@ -153,4 +153,4 @@ Linear mixed effect models
 <br>
 # Results
 
-<link href="file:///C:/Users/ddibaba/Git/StatTools/inst/extdata/Readme.html" />
+<src href="file:///C:/Users/ddibaba/Git/StatTools/inst/extdata/Readme.html" />
