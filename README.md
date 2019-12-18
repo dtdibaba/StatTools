@@ -62,7 +62,7 @@ lists of the column header names.
 
 # EXAMPLES
 ```r
-devtools::install_github("dtdibaba/StatTools") <br>
+devtools::install_github("dtdibaba/StatTools") 
 library(StatTools)
 ```
 # Logistic regression analysis with a continuous and categorical predictors, and intercept not requested 
@@ -134,7 +134,7 @@ Model="coxph", Pred=c( "X"),  colname=c("Strata", "Variable",
  data3<-data.frame(x=x, z=z, Cat=Cat, y=y)
 
  regby(datain=data3, byVar='Cat', frmlYX=formula(z~x), Model="polr",
-  colname=c("Strata", "Variable", "Beta (95%CIs)", "P-value",<br> 
+  colname=c("Strata", "Variable", "Beta (95%CIs)", "P-value",
   "Cum_Prob", "OR" ), Factor=TRUE, Intercept=FALSE, col.names = TRUE)
 ```
 <br><br>
