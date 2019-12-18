@@ -153,5 +153,5 @@ Linear mixed effect models
 <br>
 
 # Results
-<img src="https://imgur.com/VMh4jei" height="1000"/>
+<img src="https://i.imgur.com/PealIoR.png" height="1000"/>
 
