@@ -22,7 +22,7 @@ colname,<br>
 )<br>
 
 # Arguments<br>
-\datain <br>
+datain <br>
   Is the input dataset
 
 byVar <br>
