@@ -65,7 +65,7 @@ lists of the column header names.
 devtools::install_github("dtdibaba/StatTools") 
 library(StatTools)
 ```
-# Logistic regression analysis with a continuous and categorical predictors, and intercept not requested 
+Logistic regression analysis with a continuous and categorical predictors, and intercept not requested 
  
 ```r
 library(StatTools)
@@ -89,7 +89,7 @@ data1<-data.frame(x=x,z=z, Cat=Cat, y=y )
  "Zc", "Zd"),  colname=c("Strata", "Variable", "OR(95%CIs)", "P-value" ),
  Factor=TRUE, Intercept=FALSE, EXP=TRUE)
 ```
-# Multiple linear regression analysis with a continuous and categorical predictors, and intercept included
+ Multiple linear regression analysis with a continuous and categorical predictors, and intercept included
  
 ```r
 regby(datain=data1, byVar='Cat', frmlYX=formula(y~x+z), fam=guassian,
@@ -105,7 +105,7 @@ regby(datain=mtcars, byVar='cyl', frmlYX=formula(disp~factor(gear)+factor(am)+vs
 ```
 <br><br>
 
-# Cox proportional hazard regression analysis with a continuous predictor
+Cox proportional hazard regression analysis with a continuous predictor
 
  
 ```r
@@ -125,7 +125,7 @@ Model="coxph", Pred=c( "X"),  colname=c("Strata", "Variable",
 ```
  <br><br>
 
-# Proportional odds ordered logistic regression
+Proportional odds ordered logistic regression
  ```r
  x<-rnorm(50)
  z<-sample(c(letters[1:5]), 50, TRUE)
@@ -139,7 +139,7 @@ Model="coxph", Pred=c( "X"),  colname=c("Strata", "Variable",
 ```
 <br><br>
 
-# Multinomial logistic regression
+Multinomial logistic regression
 ```r
  regby(datain=data3, byVar='Cat',  frmlYX=(z~x), Model = "multinom", 
  colname=c("Strata", "Variable", "OR (95%CIs)", "P-value" ), Factor=TRUE,
@@ -147,7 +147,7 @@ Model="coxph", Pred=c( "X"),  colname=c("Strata", "Variable",
 ```
 <br><br>
 
-# Linear mixed effect models
+Linear mixed effect models
  ```r
  regby(datain=data3, byVar='Cat',  frmlYX=(x~y+(1|z)), Model = "lmer", 
  col.names = FALSE)
