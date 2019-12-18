@@ -151,6 +151,7 @@ Linear mixed effect models
  col.names = FALSE)
 ```
 <br>
+
 # Results
 
-[Results] (file:///C:/Users/ddibaba/Git/StatTools/inst/extdata/regbytables.html")
+[Results]("file:///C:/Users/ddibaba/Git/StatTools/inst/extdata/regbytables.html")
