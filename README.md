@@ -1,4 +1,4 @@
-# StatTools
+# regby {StatTools} 
 An R package that includes regby function to extract summary results of stratified regression analyses
 
 # Description
