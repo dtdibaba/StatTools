@@ -153,5 +153,5 @@ Linear mixed effect models
 <br>
 
 # Results
+<img src="https://imgur.com/a/U9LpICm" height="200"/>
 
-[Results]("file:///C:/Users/ddibaba/Git/StatTools/inst/extdata/regbytables.html")
