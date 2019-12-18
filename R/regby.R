@@ -30,7 +30,6 @@
 #' @param EXP Whether you want the exponentiation of the estimate and CIs. EXP
 #' defaults to TRUE.
 #' @param col.names Whether the user wants to rename column
-<<<<<<< HEAD
 #' names. Default=TRUE.
 #' @param colname lists of the column header names.
 #' @param Model The regression function name such as lm, glm, coxph.
@@ -39,16 +38,6 @@
 #'  \itemize{
 #'  \item table output }
 #' @importFrom survival coxph
-=======
-#' names. Default=TRUE. 
-#' @param colname lists of the column header names. 
-#' @param Model The regression function name such as lm, glm, coxph. 
-#' @param ...  Expandable. 
-#' @return returns           
-#'  \itemize{           
-#'  knitr table} 
-#' @importFrom survival coxph 
->>>>>>> 50a2f806e6f9903a62f77415e87d10044df53c84
 #' @importFrom survival Surv
 #' @importFrom MASS polr
 #' @importFrom nnet multinom
@@ -136,7 +125,7 @@ regby <- function(datain,
                   col.names=TRUE,
                   colname,
                   ...) {
-  #Create the regression models
+  # Create the regression models
   if (Model=="glm") {
     REG<-by(datain, datain[,byVar], function(x) glm(frmlYX, data=x, family=fam))
   } else if (Model=="lm")
@@ -153,16 +142,16 @@ regby <- function(datain,
     frmlYX<-noquote(deparse(substitute(frmlYX)))
     REG<-by(datain, datain[, byVar], function(x) multinom(formula(frmlYX), data=x))
   }else stop ("Your model may have not been implimented in this package yet.")
-
-  #Summarize the model result
+  
+  # Summarize the model result
   sum1<-lapply(REG, summary)
-  #get the coefficients
+  # get the coefficients
   ES<-lapply(sum1, coef)
-  #Create a dataframe of the coefficients
+  # Create a dataframe of the coefficients
   xx<-simplify2array(ES)
 
   if (Model=="multinom" & Model!= "lmer"){
-    #get the coefficients
+    # get the coefficients
     sum1<-lapply(REG, summary)
     ES<-lapply(sum1, coef)
     xx<-simplify2array(ES)
@@ -171,7 +160,7 @@ regby <- function(datain,
     estimate<-sprintf("%.2f", exp(ES))
     estimate<-matrix(estimate, ncol=1)
 
-    #Get the confidence intervals
+    # Get the confidence intervals
     ci<-lapply(REG, confint)
     ci<-simplify2array(ci)
     ci<-ci[2,,,]
@@ -180,7 +169,7 @@ regby <- function(datain,
     Upper<-sprintf("%.2f", cie[2,,])
     CI<-noquote(paste0( " (", Lower, ", ", Upper, ")"))
 
-    #Get the standard errors to calculate P-values
+    # Get the standard errors to calculate P-values
     se<-sum1[names(sum1)]
     SE<-simplify2array(se)[row.names(simplify2array(se))=="standard.errors", ]
     SE<-simplify2array(SE)
@@ -189,11 +178,11 @@ regby <- function(datain,
     z<- coef/SE
     pval<-sprintf("%.4f", pnorm(abs(z), lower.tail=FALSE)*2)
 
-    #Get the row names of coefficients
+    # Get the row names of coefficients
     Pred<-rep(row.names(xx), length(sum1))
     Strata<-sort(rep(names(REG), dim(xx)[1]))
 
-    #Assemble the extrated variables
+    # Assemble the extracted variables
     Result<-data.frame(Strata=Strata, Variable=Pred, OR=paste0(estimate, CI), "Pval"=pval)
 
 
@@ -220,11 +209,11 @@ regby <- function(datain,
       ES<-noquote(data.frame(Strata=paste0(Strata), Variable=paste0(Predictors),  estimate=paste0(estimate), P.value=paste0(P.value)))
 
 
-      #Extract the 95% Confidence Intervals (CIs)
+      # Extract the 95% Confidence Intervals (CIs)
 
       CI <-lapply(REG, confint)
 
-      #Let's covert the 95%CIs to exponential forms
+      # Let's covert the 95% CIs to exponential forms
       if (EXP==TRUE)
       { CIE<-lapply(CI, exp) }
       else {CIE<-CI }
@@ -248,16 +237,16 @@ regby <- function(datain,
         ci<-ci
         ES<-ES
       }
-      #Merge the point estimate, P-value, and the CIs
+      # Merge the point estimate, P-value, and the CIs
       Result<-merge(ES, ci, by=c("Strata", "Variable"))
-      #Re-arrange the columns
+      # Re-arrange the columns
       Result<-Result[,c(1,2,3, 5,4)]
       Result<-data.frame(Strata=Result$Strata, Variable=Result$Variable, "OR(95%CI)"= paste0(Result[,3], Result[,4]), "P-value"=Result$P.value)
 
     }else
     {
       #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      #Started the if else above here.
+      # Started the if else above here.
       ES<-simplify2array(sum1)
       ES<-ES["coefficients",]
 
@@ -298,9 +287,9 @@ regby <- function(datain,
 
   }else if (Model=="lmer"){
 
-    #Linear Mixed Effect Models
+    # Linear Mixed Effect Models
 
-    #Get the Estimates and 95%CIs
+    # Get the Estimates and 95%CIs
     sum1<-lapply(REG, summary)
     ES<-lapply(sum1, coef)
     ES<-simplify2array(ES)
@@ -351,7 +340,7 @@ regby <- function(datain,
     Estimates<-rbind(sig3, Beta)
     Results<-Estimates[order(Estimates$Strata), ]
     Results$Pred<-Pred
-    #Get the Pvalues
+    # Get the Pvalues
     pdata<-data.frame(Strata, pval)
     psig<-rep("", dim(CI)[1])
     psigdata<-data.frame(Strata, pval=psig)
@@ -364,9 +353,9 @@ regby <- function(datain,
 
 
   } else if (Model=="polr") {
-    #================================
-    #Proportional Logistic Regression
-    #================================
+    #==================================
+    # Proportional Logistic Regression
+    #==================================
     estimate<-noquote(matrix(sprintf("%.2f", xx[,1,]), ncol=1))
     Lower<-matrix((xx[,1,]-1.96*xx[,2,]),ncol=1, byrow=FALSE)
     Upper<-matrix((xx[,1,]+1.96*xx[,2,]), ncol=1, byrow=FALSE)
@@ -421,33 +410,20 @@ regby <- function(datain,
   if(col.names==TRUE){
     colnames(Result)<-colname
   }
-<<<<<<< HEAD
 
-  requireNamespace("tableHTML", quietly=TRUE)
-  mycss<-tableHTML::make_css(list("thead,tr, th", c("border-top", "border-bottom"), c("1px double solid", "1px double broken") ))
 
-  #Create the table
-  requireNamespace("kableExtra")
-  result <- kable(Result,format = "html", padding = 0, row.names = FALSE, full_width=FALSE, css =mycss)%>%kable_styling(full_width =FALSE, position="left")
-
+  
+  # Create the table
+  # requireNamespace("kableExtra")
+  # result <- kable(Result,format = "html", padding = 0, row.names = FALSE,full_width=FALSE, output =FALSE)%>%kable_styling(full_width =FALSE, position="left");
+  
   requireNamespace("htmlTable", quietly=TRUE)
   result<-htmlTable(Result,rnames=FALSE, css.cell=matrix("padding-left:1em", nrow=nrow   (Result)+1, ncol=ncol(Result)))
-
-=======
   
-  
-  #Create the table
-  requireNamespace("kableExtra")
-  result <- kable(Result,format = "html", padding = 0, row.names = FALSE, full_width=FALSE)%>%kable_styling(full_width =FALSE, position="left")
-  
-  #requireNamespace("htmlTable", quietly=TRUE)
-  #result<-htmlTable(Result,rnames=FALSE, css.cell=matrix("padding-left:1em", nrow=nrow   (Result)+1, ncol=ncol(Result)))
-  
->>>>>>> 50a2f806e6f9903a62f77415e87d10044df53c84
   #Hide the message html style printed to R console
 
-  #sink("tmpfile")
-  #Turn off warnings
+  # sink("tmpfile")
+  # Turn off warnings
   options(warn=-1)
   #Output the tables
   result
