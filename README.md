@@ -121,7 +121,7 @@ Model="coxph", Pred=c( "X"),  colname=c("Strata", "Variable",<br>
 
  <br><br>
 
-# Proportional Odds Ordered Logistic Regression
+# Proportional odds ordered logistic regression
  
  x<-rnorm(50)<br>
  z<-sample(c(letters[1:5]), 50, TRUE)<br>
@@ -135,7 +135,7 @@ Model="coxph", Pred=c( "X"),  colname=c("Strata", "Variable",<br>
 
 <br><br>
 
-# Multinomial Logistic Regression
+# Multinomial logistic regression
 
  regby(datain=data3, byVar='Cat',  frmlYX=(z~x), Model = "multinom", <br> 
  colname=c("Strata", "Variable", "OR (95%CIs)", "P-value" ), Factor=TRUE,<br> 
@@ -143,7 +143,7 @@ Model="coxph", Pred=c( "X"),  colname=c("Strata", "Variable",<br>
 
 <br><br>
 
-# Linear Mixed Effect Models
+# Linear mixed effect models
  
  regby(datain=data3, byVar='Cat',  frmlYX=(x~y+(1|z)), Model = "lmer", <br>
  col.names = FALSE)
