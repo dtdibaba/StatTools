@@ -151,3 +151,6 @@ Linear mixed effect models
  col.names = FALSE)
 ```
 <br>
+# Results
+
+<link href="file:///C:/Users/ddibaba/Git/StatTools/inst/extdata/Readme.html" />
