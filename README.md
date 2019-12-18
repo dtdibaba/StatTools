@@ -68,40 +68,40 @@ library(StatTools)
 # Logistic regression analysis with a continuous and categorical predictors, and intercept not requested 
  
 ```r
-library(StatTools)<br>
-set.seed(123896) <br>
-requireNamespace("htmlTable",quietly=TRUE)<br>
-x=rnorm(100)<br> 
+library(StatTools)
+set.seed(123896) 
+requireNamespace("htmlTable",quietly=TRUE)
+x=rnorm(100)
 z=sample(letters[1:4], 100, TRUE) 
-R<-c('B', 'W') <br>
-Cat<-sample(R, 100, TRUE) <br>
-y=rbinom(100, 1, 0.5)<br> 
-data1<-data.frame(x=x,z=z, Cat=Cat, y=y ) <br>
+R<-c('B', 'W') 
+Cat<-sample(R, 100, TRUE) 
+y=rbinom(100, 1, 0.5)
+data1<-data.frame(x=x,z=z, Cat=Cat, y=y ) 
 
 
 #If Factor==TRUE include the level labels of the predictor as separate names.<br>
- regby(datain=data1, byVar='Cat',<br>
- frmlYX=formula(y~x+z), <br>
- fam=binomial, <br>
- Model="glm", <br>
- Pred=c("Intercept",<br>
-  "X","Zb",<br>
- "Zc", "Zd"),  colname=c("Strata", "Variable", "OR(95%CIs)", "P-value" ),<br>
- Factor=TRUE, Intercept=FALSE, EXP=TRUE)<br>
+ regby(datain=data1, byVar='Cat',
+ frmlYX=formula(y~x+z), 
+ fam=binomial, 
+ Model="glm", 
+ Pred=c("Intercept",
+  "X","Zb",
+ "Zc", "Zd"),  colname=c("Strata", "Variable", "OR(95%CIs)", "P-value" ),
+ Factor=TRUE, Intercept=FALSE, EXP=TRUE)
 ```
 # Multiple linear regression analysis with a continuous and categorical predictors, and intercept included
  
 ```r
-regby(datain=data1, byVar='Cat', frmlYX=formula(y~x+z), fam=guassian,<br>
-Model="lm",Pred=c("Intercept", "X","Zb", "Zc", "Zd"), <br>
-colname=c("Strata", "Variable", "Beta (95%CIs)", "P-value" ), <br>
-Factor=TRUE, Intercept=TRUE, EXP=FALSE)<br>
+regby(datain=data1, byVar='Cat', frmlYX=formula(y~x+z), fam=guassian,
+Model="lm",Pred=c("Intercept", "X","Zb", "Zc", "Zd"), 
+colname=c("Strata", "Variable", "Beta (95%CIs)", "P-value" ), 
+Factor=TRUE, Intercept=TRUE, EXP=FALSE)
 
 
-regby(datain=mtcars, byVar='cyl', frmlYX=formula(disp~factor(gear)+factor(am)+vs), fam=guassian,<br>
-      Model="lm",Pred=NULL, <br>
-      colname=c("Strata", "Variable", "Beta (95%CIs)", "P-value" ), <br>
-      Factor=TRUE, Intercept=TRUE, EXP=FALSE)<br>
+regby(datain=mtcars, byVar='cyl', frmlYX=formula(disp~factor(gear)+factor(am)+vs), fam=guassian,
+      Model="lm",Pred=NULL, 
+      colname=c("Strata", "Variable", "Beta (95%CIs)", "P-value" ), 
+      Factor=TRUE, Intercept=TRUE, EXP=FALSE)
 ```
 <br><br>
 
@@ -109,47 +109,47 @@ regby(datain=mtcars, byVar='cyl', frmlYX=formula(disp~factor(gear)+factor(am)+vs
 
  
 ```r
-set.seed(1243567)<br>
-t<-rnorm(100, 15, 3)<br>
-y<-rbinom(100, 1, 0.5)<br>
-Cat<-sample(c("M", "F"), 100, TRUE)<br>
-x<-rnorm(100, 5, 2)<br>
-z<-rpois(100,1)<br>
-z<-factor(z)<br>
-data2<-data.frame(t=t, x=x, Cat=Cat, y=y,z)<br>
-require('survival')<br>
+set.seed(1243567)
+t<-rnorm(100, 15, 3)
+y<-rbinom(100, 1, 0.5)
+Cat<-sample(c("M", "F"), 100, TRUE)
+x<-rnorm(100, 5, 2)
+z<-rpois(100,1)
+z<-factor(z)
+data2<-data.frame(t=t, x=x, Cat=Cat, y=y,z)
+require('survival')
 
-regby(datain=data2, byVar='Cat', frmlYX=formula(Surv(t,y)~x),<br>
-Model="coxph", Pred=c( "X"),  colname=c("Strata", "Variable",<br>
-"HR (95%CIs)", "P-value" ), Factor=TRUE, Intercept=FALSE)<br>
+regby(datain=data2, byVar='Cat', frmlYX=formula(Surv(t,y)~x),
+Model="coxph", Pred=c( "X"),  colname=c("Strata", "Variable",
+"HR (95%CIs)", "P-value" ), Factor=TRUE, Intercept=FALSE)
 ```
  <br><br>
 
 # Proportional odds ordered logistic regression
  ```r
- x<-rnorm(50)<br>
- z<-sample(c(letters[1:5]), 50, TRUE)<br>
- Cat<-sample(R, 50, TRUE)<br>
- y<-rbinom(50, 1, 0.5)<br>
- data3<-data.frame(x=x, z=z, Cat=Cat, y=y)<br>
+ x<-rnorm(50)
+ z<-sample(c(letters[1:5]), 50, TRUE)
+ Cat<-sample(R, 50, TRUE)
+ y<-rbinom(50, 1, 0.5)
+ data3<-data.frame(x=x, z=z, Cat=Cat, y=y)
 
- regby(datain=data3, byVar='Cat', frmlYX=formula(z~x), Model="polr",<br> 
+ regby(datain=data3, byVar='Cat', frmlYX=formula(z~x), Model="polr",
   colname=c("Strata", "Variable", "Beta (95%CIs)", "P-value",<br> 
-  "Cum_Prob", "OR" ), Factor=TRUE, Intercept=FALSE, col.names = TRUE)<br>
+  "Cum_Prob", "OR" ), Factor=TRUE, Intercept=FALSE, col.names = TRUE)
 ```
 <br><br>
 
 # Multinomial logistic regression
 ```r
- regby(datain=data3, byVar='Cat',  frmlYX=(z~x), Model = "multinom", <br> 
- colname=c("Strata", "Variable", "OR (95%CIs)", "P-value" ), Factor=TRUE,<br> 
+ regby(datain=data3, byVar='Cat',  frmlYX=(z~x), Model = "multinom", 
+ colname=c("Strata", "Variable", "OR (95%CIs)", "P-value" ), Factor=TRUE,
  Intercept=FALSE)
 ```
 <br><br>
 
 # Linear mixed effect models
  ```r
- regby(datain=data3, byVar='Cat',  frmlYX=(x~y+(1|z)), Model = "lmer", <br>
+ regby(datain=data3, byVar='Cat',  frmlYX=(x~y+(1|z)), Model = "lmer", 
  col.names = FALSE)
 ```
 <br><br>
