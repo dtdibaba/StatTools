@@ -22,44 +22,22 @@ colname,<br>
 )<br>
 
 # Arguments<br>
-datain <br>
-Is the input dataset
+\arguments{
+  \item{datain}{Is the input dataset}
+  \item{byVar}{Is the stratifying categorical variable. }
 
-byVar <br>
-Is the stratifying categorical variable. 
+\item{ frmlYX	}{The model formula.}
+\item{fam	}{Distribution family for the output variable. Examples are binomial, poisson, etc.}
+\item{Pred  }{Is a list containing the predictor variables names in the order they appear in the model formula.For example, if Z is a factor predictor variable and has a, b, c, and d levels, unless otherwise the reference is re-leveled, the coefficients will be output in alphabetical order with the first level being the reference level. Thus, include in the "Pred" list the levels for which the coefficients are output as Pred = c("Other-predictors", "Zb", "Zc", "Zd") in the order they appear in the model formula.}
+\item{Factor}{Whether there are categorical predictors in the model. It defaults to FALSE.}
+\item{Intercept	}{Whether you want the intercept output or not. It defaults to FALSE. If you want the intercept, include Intercept as the first list Pred name lists.}
 
-frmlYX <br>
-The model formula.
-
-fam <br>
-Distribution family for the output variable. Examples are binomial, poisson, etc.
-
-Pred <br>
-Is a list containing the predictor variables names in the order they appear in the model formula.For example, if Z is a factor predictor variable and has a, b, c, and d levels, unless otherwise the reference is re-leveled, the coefficients will be output in alphabetical order with the first level being the reference level. Thus, include in the “Pred” list the levels for which the coefficients are output as Pred=c(“Other-predictors”, “Zb”, “Zc”, “Zd”) in the order they appear in the model formula.
-
-Factor <br>
-
-Whether there are categorical predictors in the model. It defaults to FALSE.
-
-Intercept <br>
-
-Whether you want the intercept output or not. It defaults to FALSE. If you want the intercept, include Intercept as the first list Pred name lists.
-
-EXP <br>
-Whether you want the exponentiation of the estimate and CIs. EXP defaults to TRUE.
-
-Model <br>
-The regression function name such as lm, glm, coxph.
-
-col.names <br>
-Whether the user wants to rename column names. Default=TRUE.
-
-colname <br>
-lists of the column header names.
-
-… Expandable.
-
-
+\item{EXP}{Whether you want the exponentiation of the estimate and CIs. EXP defaults to TRUE.}
+\item{Model	}{The regression function name such as lm, glm, coxph.}
+\item{col.names	}{Whether the user wants to rename column names. Default = TRUE.}
+\item{colname	}{lists of the column header names.}
+\item{...	}{Expandable.}
+}
 # EXAMPLES
 ```r
 devtools::install_github("dtdibaba/StatTools") 
@@ -97,13 +75,12 @@ Model="lm",Pred=c("Intercept", "X","Zb", "Zc", "Zd"),
 colname=c("Strata", "Variable", "Beta (95%CIs)", "P-value" ), 
 Factor=TRUE, Intercept=TRUE, EXP=FALSE)
 
-
 regby(datain=mtcars, byVar='cyl', frmlYX=formula(disp~factor(gear)+factor(am)+vs), fam=guassian,
       Model="lm",Pred=NULL, 
       colname=c("Strata", "Variable", "Beta (95%CIs)", "P-value" ), 
       Factor=TRUE, Intercept=TRUE, EXP=FALSE)
 ```
-<br><br>
+<br>
 
 Cox proportional hazard regression analysis with a continuous predictor
 
@@ -123,7 +100,7 @@ regby(datain=data2, byVar='Cat', frmlYX=formula(Surv(t,y)~x),
 Model="coxph", Pred=c( "X"),  colname=c("Strata", "Variable",
 "HR (95%CIs)", "P-value" ), Factor=TRUE, Intercept=FALSE)
 ```
- <br><br>
+ <br>
 
 Proportional odds ordered logistic regression
  ```r
@@ -137,7 +114,7 @@ Proportional odds ordered logistic regression
   colname=c("Strata", "Variable", "Beta (95%CIs)", "P-value",
   "Cum_Prob", "OR" ), Factor=TRUE, Intercept=FALSE, col.names = TRUE)
 ```
-<br><br>
+<br>
 
 Multinomial logistic regression
 ```r
@@ -145,11 +122,11 @@ Multinomial logistic regression
  colname=c("Strata", "Variable", "OR (95%CIs)", "P-value" ), Factor=TRUE,
  Intercept=FALSE)
 ```
-<br><br>
+<br>
 
 Linear mixed effect models
  ```r
  regby(datain=data3, byVar='Cat',  frmlYX=(x~y+(1|z)), Model = "lmer", 
  col.names = FALSE)
 ```
-<br><br>
+<br>
