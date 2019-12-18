@@ -85,7 +85,7 @@ data1<-data.frame(x=x,z=z, Cat=Cat, y=y ) <br>
  "Zc", "Zd"),  colname=c("Strata", "Variable", "OR(95%CIs)", "P-value" ),<br>
  Factor=TRUE, Intercept=FALSE, EXP=TRUE)<br>
 
-# Multiple Linear regression analysis with a continuous and categorical predictors, and intercept included
+# Multiple linear regression analysis with a continuous and categorical predictors, and intercept included
  
 
 regby(datain=data1, byVar='Cat', frmlYX=formula(y~x+z), fam=guassian,<br>
