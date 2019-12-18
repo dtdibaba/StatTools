@@ -61,13 +61,13 @@ lists of the column header names.
 
 
 # EXAMPLES
-
+```r
 devtools::install_github("dtdibaba/StatTools") <br>
 library(StatTools)
-
+```
 # Logistic regression analysis with a continuous and categorical predictors, and intercept not requested 
  
-
+```r
 library(StatTools)<br>
 set.seed(123896) <br>
 requireNamespace("htmlTable",quietly=TRUE)<br>
@@ -88,10 +88,10 @@ data1<-data.frame(x=x,z=z, Cat=Cat, y=y ) <br>
   "X","Zb",<br>
  "Zc", "Zd"),  colname=c("Strata", "Variable", "OR(95%CIs)", "P-value" ),<br>
  Factor=TRUE, Intercept=FALSE, EXP=TRUE)<br>
-
+```
 # Multiple linear regression analysis with a continuous and categorical predictors, and intercept included
  
-
+```r
 regby(datain=data1, byVar='Cat', frmlYX=formula(y~x+z), fam=guassian,<br>
 Model="lm",Pred=c("Intercept", "X","Zb", "Zc", "Zd"), <br>
 colname=c("Strata", "Variable", "Beta (95%CIs)", "P-value" ), <br>
@@ -102,13 +102,13 @@ regby(datain=mtcars, byVar='cyl', frmlYX=formula(disp~factor(gear)+factor(am)+vs
       Model="lm",Pred=NULL, <br>
       colname=c("Strata", "Variable", "Beta (95%CIs)", "P-value" ), <br>
       Factor=TRUE, Intercept=TRUE, EXP=FALSE)<br>
-
+```
 <br><br>
 
 # Cox proportional hazard regression analysis with a continuous predictor
 
  
-
+```r
 set.seed(1243567)<br>
 t<-rnorm(100, 15, 3)<br>
 y<-rbinom(100, 1, 0.5)<br>
@@ -122,11 +122,11 @@ require('survival')<br>
 regby(datain=data2, byVar='Cat', frmlYX=formula(Surv(t,y)~x),<br>
 Model="coxph", Pred=c( "X"),  colname=c("Strata", "Variable",<br>
 "HR (95%CIs)", "P-value" ), Factor=TRUE, Intercept=FALSE)<br>
-
+```
  <br><br>
 
 # Proportional odds ordered logistic regression
- 
+ ```r
  x<-rnorm(50)<br>
  z<-sample(c(letters[1:5]), 50, TRUE)<br>
  Cat<-sample(R, 50, TRUE)<br>
@@ -136,20 +136,20 @@ Model="coxph", Pred=c( "X"),  colname=c("Strata", "Variable",<br>
  regby(datain=data3, byVar='Cat', frmlYX=formula(z~x), Model="polr",<br> 
   colname=c("Strata", "Variable", "Beta (95%CIs)", "P-value",<br> 
   "Cum_Prob", "OR" ), Factor=TRUE, Intercept=FALSE, col.names = TRUE)<br>
-
+```
 <br><br>
 
 # Multinomial logistic regression
-
+```r
  regby(datain=data3, byVar='Cat',  frmlYX=(z~x), Model = "multinom", <br> 
  colname=c("Strata", "Variable", "OR (95%CIs)", "P-value" ), Factor=TRUE,<br> 
  Intercept=FALSE)
-
+```
 <br><br>
 
 # Linear mixed effect models
- 
+ ```r
  regby(datain=data3, byVar='Cat',  frmlYX=(x~y+(1|z)), Model = "lmer", <br>
  col.names = FALSE)
-
+```
 <br><br>
