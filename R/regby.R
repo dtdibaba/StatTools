@@ -48,18 +48,18 @@
 #' @importFrom kableExtra %>%
 #' @import stats
 #' @importFrom htmlTable htmlTable
-#' @examples
-#' #Logistic regression analysis with a continuous and categorical predictors,
-#' # and intercept not requested
-#'set.seed(123896)
+#' @examples  
+#' # Logistic regression analysis with a continuous and categorical predictors,
+#' # and intercept not requested 
+#'set.seed(123896) 
 #'requireNamespace("htmlTable",quietly=TRUE)
-#'x=rnorm(100)
-#'z=sample(letters[1:4], 100, TRUE)
-#' R<-c('B', 'W')
-#' cat<-sample(R, 100, TRUE)
-#' y=rbinom(100, 1, 0.5)
-#' data1<-data.frame(x=x,z=z, cat=cat, y=y )
-#' #If Factor==TRUE include the level labels of the predictor as separate names.
+#'x=rnorm(100) 
+#'z=sample(letters[1:4], 100, TRUE) 
+#' R<-c('B', 'W') 
+#' cat<-sample(R, 100, TRUE) 
+#' y=rbinom(100, 1, 0.5) 
+#' data1<-data.frame(x=x,z=z, cat=cat, y=y ) 
+#' # If Factor==TRUE include the level labels of the predictor as separate names.
 #' regby(datain=data1, byVar='cat',
 #' frmlYX=formula(y~x+z),
 #' fam=binomial,
@@ -69,15 +69,15 @@
 #' "Zc", "Zd"),  colname=c("Strata", "Variable", "OR(95%CIs)", "P-value" ),
 #' Factor=TRUE, Intercept=FALSE, EXP=TRUE)
 
-#' #Multiple Linear regression analysis with a continuous and categorical
-#' #predictors, and intercept included
 
+#' # Multiple Linear regression analysis with a continuous and categorical 
+#' # predictors, and intercept included
 #' regby(datain=data1, byVar='cat', frmlYX=formula(y~x+z), fam=guassian,
 #'  Model="lm",Pred=c("Intercept", "X","Zb", "Zc", "Zd"),
 #'  colname=c("Strata", "Variable", "Beta (95%CIs)", "P-value" ),
 #'  Factor=TRUE, Intercept=TRUE, EXP=FALSE)
 
-#' #Cox proportional hazard regression analysis with a continuous predictor
+#' # Cox proportional hazard regression analysis with a continuous predictor
 
 #' set.seed(1243567)
 #' t<-rnorm(100, 15, 3)
@@ -91,7 +91,7 @@
 #' regby(datain=data2, byVar='cat', frmlYX=formula(Surv(t,y)~x),
 #'  Model="coxph", Pred=c( "X"),  colname=c("Strata", "Variable",
 #'  "HR (95%CIs)", "P-value" ), Factor=TRUE, Intercept=FALSE)
-#' #Proportional Odds Ordered Logistic Regression
+#' # Proportional Odds Ordered Logistic Regression
 #' x<-rnorm(50)
 #' z<-sample(c(letters[1:5]), 50, TRUE)
 #' cat<-sample(R, 50, TRUE)
@@ -102,14 +102,13 @@
 #'  colname=c("Strata", "Variable", "Beta (95%CIs)", "P-value",
 #'  "Cum_Prob", "OR" ), Factor=TRUE, Intercept=FALSE, col.names = TRUE)
 
-
-#' #Multinomial Logistic Regression
-#' regby(datain=data3, byVar='cat',  frmlYX=(z~x), Model = "multinom",
-#' colname=c("Strata", "Variable", "OR (95%CIs)", "P-value" ), Factor=TRUE,
+#' # Multinomial Logistic Regression
+#' regby(datain=data3, byVar='cat',  frmlYX=(z~x), Model = "multinom",  
+#' colname=c("Strata", "Variable", "OR (95%CIs)", "P-value" ), Factor=TRUE, 
 #' Intercept=FALSE)
 
-#' #Linear Mixed Effect Models
-#' regby(datain=data3, byVar='cat',  frmlYX=(x~y+(1|z)), Model = "lmer",
+#' # Linear Mixed Effect Models
+#' regby(datain=data3, byVar='cat',  frmlYX=(x~y+(1|z)), Model = "lmer", 
 #' col.names = FALSE)
 #' @export
 
@@ -177,12 +176,13 @@ regby <- function(datain,
     SE<-matrix(SE, ncol=1)
     z<- coef/SE
     pval<-sprintf("%.4f", pnorm(abs(z), lower.tail=FALSE)*2)
-
+    
     # Get the row names of coefficients
     Pred<-rep(row.names(xx), length(sum1))
     Strata<-sort(rep(names(REG), dim(xx)[1]))
+    
+    # Assemble the extrated variables
 
-    # Assemble the extracted variables
     Result<-data.frame(Strata=Strata, Variable=Pred, OR=paste0(estimate, CI), "Pval"=pval)
 
 
@@ -207,13 +207,14 @@ regby <- function(datain,
       Predictors=rep(c(Pred), length(ES))
 
       ES<-noquote(data.frame(Strata=paste0(Strata), Variable=paste0(Predictors),  estimate=paste0(estimate), P.value=paste0(P.value)))
-
-
+      
+      
       # Extract the 95% Confidence Intervals (CIs)
-
+      
       CI <-lapply(REG, confint)
+      
+      # Let's covert the 95%CIs to exponential forms
 
-      # Let's covert the 95% CIs to exponential forms
       if (EXP==TRUE)
       { CIE<-lapply(CI, exp) }
       else {CIE<-CI }
@@ -245,7 +246,9 @@ regby <- function(datain,
 
     }else
     {
-      #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      
+      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
       # Started the if else above here.
       ES<-simplify2array(sum1)
       ES<-ES["coefficients",]
@@ -273,7 +276,7 @@ regby <- function(datain,
       }else {Upper<-Upper}
       Upper<-sprintf("%.2f",Upper)
       Strata<-sort(rep(names(REG),dim(dt)[1]))
-      #The person has to provide Pred names.
+      # The person has to provide Pred names.
       pred<-lapply(ES, row.names)
       Pred<-matrix(unlist(pred), ncol=1)
       Strata<-rep(c(names(REG)), lapply(pred, length))
@@ -283,7 +286,9 @@ regby <- function(datain,
       Result<-data.frame(Strata,Pred,  "Beta (95%CIs)"=beta, "P-value"=pval)
     }
 
-    #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   }else if (Model=="lmer"){
+    
+    # Linear Mixed Effect Models
 
   }else if (Model=="lmer"){
 
@@ -353,9 +358,11 @@ regby <- function(datain,
 
 
   } else if (Model=="polr") {
-    #==================================
+
+    # ================================
     # Proportional Logistic Regression
-    #==================================
+    # ================================
+
     estimate<-noquote(matrix(sprintf("%.2f", xx[,1,]), ncol=1))
     Lower<-matrix((xx[,1,]-1.96*xx[,2,]),ncol=1, byrow=FALSE)
     Upper<-matrix((xx[,1,]+1.96*xx[,2,]), ncol=1, byrow=FALSE)
@@ -417,15 +424,20 @@ regby <- function(datain,
   # requireNamespace("kableExtra")
   # result <- kable(Result,format = "html", padding = 0, row.names = FALSE,full_width=FALSE, output =FALSE)%>%kable_styling(full_width =FALSE, position="left");
   
-  requireNamespace("htmlTable", quietly=TRUE)
-  result<-htmlTable(Result,rnames=FALSE, css.cell=matrix("padding-left:1em", nrow=nrow   (Result)+1, ncol=ncol(Result)))
-  
-  #Hide the message html style printed to R console
 
+  # Create the table
+  requireNamespace("kableExtra")
+  result <- kable(Result,format = "html", padding = 0, row.names = FALSE, full_width=FALSE)%>%kable_styling(full_width =FALSE, position="left")
+  
+  # requireNamespace("htmlTable", quietly=TRUE)
+  # result<-htmlTable(Result,rnames=FALSE, css.cell=matrix("padding-left:1em", nrow=nrow   (Result)+1, ncol=ncol(Result)))
+  
+  # Hide the message html style printed to R console
   # sink("tmpfile")
+
   # Turn off warnings
   options(warn=-1)
-  #Output the tables
+  # Output the tables
   result
 
 }
