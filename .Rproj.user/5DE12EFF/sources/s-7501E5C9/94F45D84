@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1576699651498.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1317178989",
+    "id" : "94F45D84",
+    "lastKnownWriteTime" : 1576701212,
+    "last_content_update" : 1576701212281,
+    "path" : "C:/Users/ddibaba/Git/StatTools/man/readme.Rd",
+    "project_path" : "man/readme.Rd",
+    "properties" : {
+        "cursorPosition" : "130,0",
+        "scrollLine" : "109",
+        "tempName" : "Untitled2"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_doc"
+}

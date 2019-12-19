@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1576620333007.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "31B18EE0",
+    "lastKnownWriteTime" : 1576507933,
+    "last_content_update" : 1576507933,
+    "path" : "C:/Users/ddibaba/Git/StatTools/inst/extdata/regby_dim_issues.R",
+    "project_path" : "inst/extdata/regby_dim_issues.R",
+    "properties" : {
+        "cursorPosition" : "47,0",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

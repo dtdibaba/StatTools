@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1576617989642.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "419AA48B",
+    "lastKnownWriteTime" : 1576620710,
+    "last_content_update" : 1576620710471,
+    "path" : "C:/Users/ddibaba/Git/StatTools/inst/extdata/Readme.Rmd",
+    "project_path" : "inst/extdata/Readme.Rmd",
+    "properties" : {
+        "cursorPosition" : "44,1",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
