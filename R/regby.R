@@ -68,7 +68,7 @@
 #' "Zc", "Zd"),  colname=c("Strata", "Variable", "OR(95%CIs)", "P-value" ),
 #' Factor=TRUE, Intercept=FALSE, EXP=TRUE)
 
-#' # Multiple Linear regression analysis with a continuous and categorical 
+#' # Multiple linear regression analysis with a continuous and categorical 
 #' # predictors, and intercept included
 
 #' regby(datain=data1, byVar='cat', frmlYX=formula(y~x+z), fam=guassian,
@@ -102,12 +102,12 @@
 #'  "Cum_Prob", "OR" ), Factor=TRUE, Intercept=FALSE, col.names = TRUE)
 
 
-#' # Multinomial Logistic Regression
+#' # Multinomial logistic regression
 #' regby(datain=data3, byVar='cat',  frmlYX=(z~x), Model = "multinom",  
 #' colname=c("Strata", "Variable", "OR (95%CIs)", "P-value" ), Factor=TRUE, 
 #' Intercept=FALSE)
 
-#' # Linear Mixed Effect Models
+#' # Linear mixed effect models
 #' regby(datain=data3, byVar='cat',  frmlYX=(x~y+(1|z)), Model = "lmer", 
 #' col.names = FALSE)
 #' @export
@@ -139,7 +139,7 @@ regby <- function(datain,
     REG<-by(datain, datain[,byVar], function(x) polr(frmlYX, data=x, Hess=TRUE))
   }else if (Model== "multinom"){
     frmlYX<-noquote(deparse(substitute(frmlYX)))
-    REG<-by(datain, datain[, byVar], function(x) multinom(formula(frmlYX), data=x))
+    REG<-by(datain, datain[, byVar], function(x) multinom(formula(frmlYX), data=x, trace=FALSE))
   }else stop ("Your model may have not been implimented in this package yet.")
   
   # Summarize the model result
