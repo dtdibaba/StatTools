@@ -139,7 +139,7 @@ regby <- function(datain,
     REG<-by(datain, datain[,byVar], function(x) polr(frmlYX, data=x, Hess=TRUE))
   }else if (Model== "multinom"){
     frmlYX<-noquote(deparse(substitute(frmlYX)))
-    REG<-by(datain, datain[, byVar], function(x) multinom(formula(frmlYX), data=x))
+    REG<-by(datain, datain[, byVar], function(x) multinom(formula(frmlYX), data=x, trace=FALSE))
   }else stop ("Your model may have not been implimented in this package yet.")
   
   # Summarize the model result
