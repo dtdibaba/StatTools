@@ -35,7 +35,7 @@
 #' @param ...  Expandable. 
 #' @return returns           
 #'  \itemize{           
-#'  knitr table} 
+#'   straified regrresion table} 
 #' @importFrom survival coxph 
 #' @importFrom survival Surv
 #' @importFrom MASS polr 
