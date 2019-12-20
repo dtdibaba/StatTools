@@ -153,8 +153,9 @@ Linear mixed effect models
 <br>
 
 # Results
-<img src="https://i.imgur.com/PealIoR.png" height="1000"/>
+<img src="https://i.imgur.com/SwMIZ4o.png" height="1000"/>
 
-<img src="https://i.imgur.com/W1VOIEd.png" height="1000"/>
+<img src="https://i.imgur.com/yLITulG.png" height="1000"/>
 
-<img src="https://i.imgur.com/IIgXVv3.png" height="1000"/>
+Multinomial logistic regression
+<img src="https://i.imgur.com/djOl1mS.png" height="1000"/>
