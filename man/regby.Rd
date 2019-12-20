@@ -54,11 +54,15 @@ defaults to TRUE.}
 \item{col.names}{Whether the user wants to rename column
 names. Default=TRUE.}
 
-\item{colname}{Lists of the column header names.}
+\item{colname}{lists of the column header names.}
 
 \item{...}{Expandable.}
 }
-\value{returns knitr table.}
+\value{
+returns           
+ \itemize{           
+ knitr table}
+}
 \description{
 This function helps to extract the important
 regression summaries such as coefficients, confidence intervals, and P-value
@@ -90,7 +94,7 @@ Pred=c("Intercept",
  "X","Zb",
 "Zc", "Zd"),  colname=c("Strata", "Variable", "OR(95\%CIs)", "P-value" ),
 Factor=TRUE, Intercept=FALSE, EXP=TRUE)
-# Multiple Linear regression analysis with a continuous and categorical 
+# Multiple linear regression analysis with a continuous and categorical 
 # predictors, and intercept included
 regby(datain=data1, byVar='cat', frmlYX=formula(y~x+z), fam=guassian,
  Model="lm",Pred=c("Intercept", "X","Zb", "Zc", "Zd"), 
@@ -118,11 +122,11 @@ data3<-data.frame(x=x, z=z, cat=cat, y=y)
 regby(datain=data3, byVar='cat', frmlYX=formula(z~x), Model="polr", 
  colname=c("Strata", "Variable", "Beta (95\%CIs)", "P-value", 
  "Cum_Prob", "OR" ), Factor=TRUE, Intercept=FALSE, col.names = TRUE)
-# Multinomial Logistic Regression
+# Multinomial logistic regression
 regby(datain=data3, byVar='cat',  frmlYX=(z~x), Model = "multinom",  
 colname=c("Strata", "Variable", "OR (95\%CIs)", "P-value" ), Factor=TRUE, 
 Intercept=FALSE)
-# Linear Mixed Effect Models
+# Linear mixed effect models
 regby(datain=data3, byVar='cat',  frmlYX=(x~y+(1|z)), Model = "lmer", 
 col.names = FALSE)
 }
