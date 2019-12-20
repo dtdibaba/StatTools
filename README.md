@@ -157,5 +157,5 @@ Linear mixed effect models
 
 <img src="https://i.imgur.com/yLITulG.png" height="1000"/>
 
-Multinomial logistic regression
+      Multinomial logistic regression
 <img src="https://i.imgur.com/djOl1mS.png" height="1000"/>
