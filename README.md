@@ -3,7 +3,7 @@ The StatTools is an R package that includes the regby and freq functions. The re
 
 # Description
 
-The regby function helps to extract the important regression summaries such as coefficients, confidence intervals, and P-value in stratified analysis. Currently, this regby is implemented for the most commonly used regression analysis such as linear regression, logistic regression, Poisson regression, proportional odds logistic regression (using polr in MASS package), multinomial regression (using multinom nnet package), Cox proportional hazard regression (using coxph in survival package), and linear mixed models (lmer in lme4 package). For poisson regression, use the glm model with fam=poisson and EXP=TRUE to get incidence rate ratio.
+The regby function helps to extract the important regression summaries such as coefficients, confidence intervals, and P-value in stratified analysis. Currently, the regby function is implemented for the most commonly used regression analysis such as linear regression, logistic regression, Poisson regression, proportional odds logistic regression (using polr in MASS package), multinomial regression (using multinom nnet package), Cox proportional hazard regression (using coxph in survival package), and linear mixed models (lmer in lme4 package). For poisson regression, use the glm model with fam=poisson and EXP=TRUE to get incidence rate ratio.
 
 # Usage 
 regby( <br>
