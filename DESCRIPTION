@@ -2,7 +2,7 @@ Package: StatTools
 Type: Package
 Title: Biostatistical tools to produce clean data analysis results with StatTools
 Version: 0.1.0
-Authors@R: Daniel T. Diabba, PhD
+Authors@R: Daniel T Diabba, PhD
 Maintainer: The package maintainer <daniel.dibaba@gmail.com>
 Description: This package includes a regby function that helps extract the summary results in stratified regression analysis such as coefficients, confidence intervals, and P-value.Currently, this function is implemented for the most commonly used regression 	analysis such as linear regression, logistic regression, Poisson regression, proportional odds logistic regression (using polr in MASS package),multinomial regression (using multinom nnet package), Cox proportional hazard regression (using coxph in survival package), and linear mixed models (lmer in lme4 package).Additional functions include freq- a function that creates frequency and percents for a single categorical variable. 
 License: GPL-2
