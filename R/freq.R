@@ -20,7 +20,7 @@ freq<-function(var, row, colnames){
   tab=round(100*prop.table(tab1),1)
   ncols=dim(tab1)
   for (i in 1:ncols){
-    tab[i]<-paste0(sprintf("%.1f", tab1[[i]]),'(',tab[[i]],"%",')')
+    tab[i]<-paste0(tab1[[i]]),'(',tab[[i]],"%",')')
   }
   prop<-matrix((c(dimnames(tab[1])[[1]], tab)), byrow=1, ncol=ncols, nrow=1, dimnames = NULL)
   dimnames(prop)<-list(row, colnames) #The Freq is added as row names.
