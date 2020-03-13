@@ -176,9 +176,9 @@ regby <- function(datain,
     SE<-matrix(SE, ncol=1)
     z<- coef/SE
     pval<-sprintf("%.4f", pnorm(abs(z), lower.tail=FALSE)*2)
- #====================line 2====================================   
+  
     # Get the row names of coefficients
-    #Pred<-rep(row.names(xx), length(sum1))
+    Pred<-rep(row.names(xx), length(sum1))
     Strata<-sort(rep(names(REG), dim(xx)[1]))
     
     # Assemble the extrated variables
@@ -274,7 +274,7 @@ regby <- function(datain,
       Strata<-sort(rep(names(REG),dim(dt)[1]))
       #The person has to provide Pred names.
       pred<-lapply(ES, row.names)
-      Pred<-matrix(unlist(pred), ncol=1)
+      Pred<-matrix(pred, ncol=1)
       Strata<-rep(c(names(REG)), lapply(pred, length))
       beta<-noquote(paste0(estimate, " (", Lower, ", ", Upper, ")"))
       Intercept= grep("(Intercept)", Pred)
