@@ -423,7 +423,8 @@ regby <- function(datain,
   # Turn off warnings
   options(warn=-1)
   # Output the tables
- return(c(Pred, result))
+Pred
+Result
   
 }
 
