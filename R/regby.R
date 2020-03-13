@@ -237,7 +237,7 @@ regby <- function(datain,
         ES<-ES
       }
       # Merge the point estimate, P-value, and the CIs
-      Result<-merge(ES, ci, by=c("Strata", "Variable"))
+      Result<-merge(ES, ci, by=c("Strata", "Variable"), sort=FALSE)
       # Re-arrange the columns
       Result<-Result[,c(1,2,3, 5,4)]
       Result<-data.frame(Strata=Result$Strata, Variable=Result$Variable, "OR(95%CI)"= paste0(Result[,3], Result[,4]), "P-value"=Result$P.value)
@@ -399,7 +399,7 @@ regby <- function(datain,
     
     Result$id<-factor(1:nrow(Result))
     
-    Result<-merge(x=Result, y=dat, by=c("Strata", "Variable"), all.x = TRUE)
+    Result<-merge(x=Result, y=dat, by=c("Strata", "Variable"), all.x = TRUE, sort=FALSE)
     Result<-Result[order(Result$id),]
     
     Result<-Result[, -5]
