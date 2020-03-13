@@ -423,7 +423,6 @@ regby <- function(datain,
   # Turn off warnings
   options(warn=-1)
   # Output the tables
-Pred
 Result
   
 }
