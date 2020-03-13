@@ -274,7 +274,7 @@ regby <- function(datain,
       Strata<-sort(rep(names(REG),dim(dt)[1]))
       #The person has to provide Pred names.
       pred<-lapply(ES, row.names)
-      Pred<-matrix(pred, ncol=1)
+      Pred<-matrix(unlist(pred)*, ncol=1)
       Strata<-rep(c(names(REG)), lapply(pred, length))
       beta<-noquote(paste0(estimate, " (", Lower, ", ", Upper, ")"))
       Intercept= grep("(Intercept)", Pred)
