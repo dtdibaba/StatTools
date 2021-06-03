@@ -10,7 +10,7 @@ Encoding: UTF-8
 LazyData: FALSE
 Imports: AER, knitr, kableExtra,lme4, MASS, nnet,survival,stats, purrr,htmlTable
 RoxygenNote: 7.1.1
-=======
+
 Package: StatTools
 Type: Package
 Title: Biostatistical tools to produce clean data analysis results with StatTools
