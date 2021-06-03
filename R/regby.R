@@ -95,7 +95,7 @@
 #' cat<-sample(R, 50, TRUE)
 #' y<-rbinom(50, 1, 0.5)
 #' data3<-data.frame(x=x, z=z, cat=cat, y=y)
-
+#' data3$z<-as.factor(data3$z)
 #' regby(datain=data3, byVar='cat', frmlYX=formula(z~x), Model="polr", 
 #'  colname=c("Strata", "Variable", "Beta (95%CIs)", "P-value", 
 #'  "Cum_Prob", "OR" ), Factor=TRUE, Intercept=FALSE, col.names = TRUE)
