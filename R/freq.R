@@ -16,11 +16,11 @@
 #' @export
 freq<-function(var, row, colnames){
 
-  table<-table(var)
-  tab=round(100*prop.table(table),1)
-  ncols=dim(table)
+  tab1<-table(var)
+  tab=round(100*prop.table(tab1),1)
+  ncols=dim(tab1)
   for (i in 1:ncols){
-    tab[i]<-paste0(sprintf("%.1f", table[[i]]),'(',tab[[i]],"%",')')
+    tab[i]<-paste0(tab1[[i]],'(',tab[[i]],"%",')')
   }
   prop<-matrix((c(dimnames(tab[1])[[1]], tab)), byrow=1, ncol=ncols, nrow=1, dimnames = NULL)
   dimnames(prop)<-list(row, colnames) #The Freq is added as row names.

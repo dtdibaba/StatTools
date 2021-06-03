@@ -35,7 +35,7 @@
 #' @param ...  Expandable. 
 #' @return returns           
 #'  \itemize{           
-#'  knitr table} 
+#'   straified regrresion table} 
 #' @importFrom survival coxph 
 #' @importFrom survival Surv
 #' @importFrom MASS polr 
@@ -68,7 +68,11 @@
 #' "Zc", "Zd"),  colname=c("Strata", "Variable", "OR(95%CIs)", "P-value" ),
 #' Factor=TRUE, Intercept=FALSE, EXP=TRUE)
 
+<<<<<<< HEAD
 #' # Multiple Linear regression analysis with a continuous and categorical 
+=======
+#' # Multiple linear regression analysis with a continuous and categorical 
+>>>>>>> 8fd27e33469fa1cb7b06794a1e91c1481ab22315
 #' # predictors, and intercept included
 
 #' regby(datain=data1, byVar='cat', frmlYX=formula(y~x+z), fam=guassian,
@@ -102,12 +106,20 @@
 #'  "Cum_Prob", "OR" ), Factor=TRUE, Intercept=FALSE, col.names = TRUE)
 
 
+<<<<<<< HEAD
 #' # Multinomial Logistic Regression
+=======
+#' # Multinomial logistic regression
+>>>>>>> 8fd27e33469fa1cb7b06794a1e91c1481ab22315
 #' regby(datain=data3, byVar='cat',  frmlYX=(z~x), Model = "multinom",  
 #' colname=c("Strata", "Variable", "OR (95%CIs)", "P-value" ), Factor=TRUE, 
 #' Intercept=FALSE)
 
+<<<<<<< HEAD
 #' # Linear Mixed Effect Models
+=======
+#' # Linear mixed effect models
+>>>>>>> 8fd27e33469fa1cb7b06794a1e91c1481ab22315
 #' regby(datain=data3, byVar='cat',  frmlYX=(x~y+(1|z)), Model = "lmer", 
 #' col.names = FALSE)
 #' @export
@@ -139,7 +151,7 @@ regby <- function(datain,
     REG<-by(datain, datain[,byVar], function(x) polr(frmlYX, data=x, Hess=TRUE))
   }else if (Model== "multinom"){
     frmlYX<-noquote(deparse(substitute(frmlYX)))
-    REG<-by(datain, datain[, byVar], function(x) multinom(formula(frmlYX), data=x))
+    REG<-by(datain, datain[, byVar], function(x) multinom(formula(frmlYX), data=x, trace=FALSE))
   }else stop ("Your model may have not been implimented in this package yet.")
   
   # Summarize the model result
@@ -176,7 +188,11 @@ regby <- function(datain,
     SE<-matrix(SE, ncol=1)
     z<- coef/SE
     pval<-sprintf("%.4f", pnorm(abs(z), lower.tail=FALSE)*2)
+<<<<<<< HEAD
     
+=======
+  
+>>>>>>> 8fd27e33469fa1cb7b06794a1e91c1481ab22315
     # Get the row names of coefficients
     Pred<-rep(row.names(xx), length(sum1))
     Strata<-sort(rep(names(REG), dim(xx)[1]))
@@ -237,7 +253,11 @@ regby <- function(datain,
         ES<-ES
       }
       # Merge the point estimate, P-value, and the CIs
+<<<<<<< HEAD
       Result<-merge(ES, ci, by=c("Strata", "Variable"))
+=======
+      Result<-merge(ES, ci, by=c("Strata", "Variable"), sort=FALSE)
+>>>>>>> 8fd27e33469fa1cb7b06794a1e91c1481ab22315
       # Re-arrange the columns
       Result<-Result[,c(1,2,3, 5,4)]
       Result<-data.frame(Strata=Result$Strata, Variable=Result$Variable, "OR(95%CI)"= paste0(Result[,3], Result[,4]), "P-value"=Result$P.value)
@@ -274,7 +294,7 @@ regby <- function(datain,
       Strata<-sort(rep(names(REG),dim(dt)[1]))
       #The person has to provide Pred names.
       pred<-lapply(ES, row.names)
-      Pred<-matrix(unlist(pred), ncol=1)
+      Pred<-matrix(pred, ncol=1)
       Strata<-rep(c(names(REG)), lapply(pred, length))
       beta<-noquote(paste0(estimate, " (", Lower, ", ", Upper, ")"))
       Intercept= grep("(Intercept)", Pred)
@@ -399,7 +419,7 @@ regby <- function(datain,
     
     Result$id<-factor(1:nrow(Result))
     
-    Result<-merge(x=Result, y=dat, by=c("Strata", "Variable"), all.x = TRUE)
+    Result<-merge(x=Result, y=dat, by=c("Strata", "Variable"), all.x = TRUE, sort=FALSE)
     Result<-Result[order(Result$id),]
     
     Result<-Result[, -5]
@@ -423,7 +443,11 @@ regby <- function(datain,
   # Turn off warnings
   options(warn=-1)
   # Output the tables
+<<<<<<< HEAD
   result
+=======
+result
+>>>>>>> 8fd27e33469fa1cb7b06794a1e91c1481ab22315
   
 }
 

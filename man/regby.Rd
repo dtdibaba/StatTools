@@ -54,11 +54,15 @@ defaults to TRUE.}
 \item{col.names}{Whether the user wants to rename column
 names. Default=TRUE.}
 
-\item{colname}{Lists of the column header names.}
+\item{colname}{lists of the column header names.}
 
 \item{...}{Expandable.}
 }
-\value{returns knitr table.}
+\value{
+returns           
+ \itemize{           
+ knitr table}
+}
 \description{
 This function helps to extract the important
 regression summaries such as coefficients, confidence intervals, and P-value
@@ -71,7 +75,7 @@ linear mixed models (lmer in lme4 package).
 }
 \examples{
  
-#Logistic regression analysis with a continuous and categorical predictors,
+# Logistic regression analysis with a continuous and categorical predictors,
 # and intercept not requested 
 set.seed(123896) 
 requireNamespace("htmlTable",quietly=TRUE)
@@ -81,7 +85,7 @@ R<-c('B', 'W')
 cat<-sample(R, 100, TRUE) 
 y=rbinom(100, 1, 0.5) 
 data1<-data.frame(x=x,z=z, cat=cat, y=y ) 
-#If Factor==TRUE include the level labels of the predictor as separate names.
+# If Factor==TRUE include the level labels of the predictor as separate names.
 regby(datain=data1, byVar='cat',
 frmlYX=formula(y~x+z), 
 fam=binomial, 
@@ -90,13 +94,13 @@ Pred=c("Intercept",
  "X","Zb",
 "Zc", "Zd"),  colname=c("Strata", "Variable", "OR(95\%CIs)", "P-value" ),
 Factor=TRUE, Intercept=FALSE, EXP=TRUE)
-#Multiple Linear regression analysis with a continuous and categorical 
-#predictors, and intercept included
+# Multiple linear regression analysis with a continuous and categorical 
+# predictors, and intercept included
 regby(datain=data1, byVar='cat', frmlYX=formula(y~x+z), fam=guassian,
  Model="lm",Pred=c("Intercept", "X","Zb", "Zc", "Zd"), 
  colname=c("Strata", "Variable", "Beta (95\%CIs)", "P-value" ), 
  Factor=TRUE, Intercept=TRUE, EXP=FALSE)
-#Cox proportional hazard regression analysis with a continuous predictor
+# Cox proportional hazard regression analysis with a continuous predictor
 set.seed(1243567)
 t<-rnorm(100, 15, 3)
 y<-rbinom(100, 1, 0.5)
@@ -109,7 +113,7 @@ require('survival')
 regby(datain=data2, byVar='cat', frmlYX=formula(Surv(t,y)~x),
  Model="coxph", Pred=c( "X"),  colname=c("Strata", "Variable", 
  "HR (95\%CIs)", "P-value" ), Factor=TRUE, Intercept=FALSE)
-#Proportional Odds Ordered Logistic Regression
+# Proportional Odds Ordered Logistic Regression
 x<-rnorm(50)
 z<-sample(c(letters[1:5]), 50, TRUE)
 cat<-sample(R, 50, TRUE)
@@ -118,11 +122,11 @@ data3<-data.frame(x=x, z=z, cat=cat, y=y)
 regby(datain=data3, byVar='cat', frmlYX=formula(z~x), Model="polr", 
  colname=c("Strata", "Variable", "Beta (95\%CIs)", "P-value", 
  "Cum_Prob", "OR" ), Factor=TRUE, Intercept=FALSE, col.names = TRUE)
-#Multinomial Logistic Regression
+# Multinomial logistic regression
 regby(datain=data3, byVar='cat',  frmlYX=(z~x), Model = "multinom",  
 colname=c("Strata", "Variable", "OR (95\%CIs)", "P-value" ), Factor=TRUE, 
 Intercept=FALSE)
-#Linear Mixed Effect Models
+# Linear mixed effect models
 regby(datain=data3, byVar='cat',  frmlYX=(x~y+(1|z)), Model = "lmer", 
 col.names = FALSE)
 }
