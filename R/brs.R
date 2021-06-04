@@ -1,4 +1,4 @@
-#'@title Summary table for univariate regression models
+#'@title Summary table for bivariate regression models
 #' @description This function creates a summary table from multiple
 #'  bivariate regression models. If you would like to examine the bivariate
 #'  associations between multiple potential confounders and an outcome variable,
