@@ -2,12 +2,12 @@
 % Please edit documentation in R/brs.R
 \name{brs}
 \alias{brs}
-\title{Summary table for univariate regression models}
+\title{Summary table for bivariate regression models}
 \usage{
 brs(..., EXP = TRUE, EST, Out)
 }
 \arguments{
-\item{...}{List of the univariate regression models separated by comma}
+\item{...}{List of the bivariate regression models separated by comma}
 
 \item{EXP}{Logical, whether to exponentiate the estimate or not}
 
@@ -17,10 +17,10 @@ brs(..., EXP = TRUE, EST, Out)
 }
 \description{
 This function creates a summary table from multiple
- univariate regression models. If you would like to examine the univariate
- association between a potential confounder and an outcome variable,
- you may want to run multiple univariate models and summarize 
- the result in one table. This function will help you with that.
+ bivariate regression models. If you would like to examine the bivariate
+ associations between multiple potential confounders and an outcome variable,
+ you may want to run multiple bivariate models and summarize 
+ the results in one table. This function helps you with that.
  brs: stands for bivariate regression summary.
 }
 \examples{
