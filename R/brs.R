@@ -30,6 +30,7 @@ brs<-function(..., EXP=TRUE, EST, Out) {
 tab<-mods
 tab<-purrr::map_df(tab, broom::tidy)
 options(warn = -1)
+library(dplyr) 
 library(tidyverse)
 library(gtsummary)
 library(knitr)
