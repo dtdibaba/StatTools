@@ -1,11 +1,11 @@
 #'@title Summary table for univariate regression models
 #' @description This function creates a summary table from multiple
-#'  univariate regression models. If you would like to examine the univariate
-#'  association between a potential confounder and an outcome variable,
-#'  you may want to run multiple univariate models and summarize 
-#'  the result in one table. This function will help you with that.
-#'  urs: stands for univariate regression summary.
-#' @param ...  List of the univariate regression models separated by comma  
+#'  bivariate regression models. If you would like to examine the bivariate
+#'  associations between multiple potential confounders and an outcome variable,
+#'  you may want to run multiple bivariate models and summarize 
+#'  the results in one table. This function will help you with that.
+#'  brs: stands for bivariate regression summary.
+#' @param ...  List of the bivariate regression models separated by comma  
 #' @param EXP  Logical, whether to exponentiate the estimate or not
 #' @param Out  The label for the response variable (a quoted string)
 #' @param EST  What to call the estimate column (a quoted string e.g. OR, HR)
@@ -15,10 +15,10 @@
 #' model1<-glm(vs~gear, data=mtcars, family=binomial)
 #' model2<-glm(vs~hp, data=mtcars, family=binomial)
 #' model3<-glm(vs~drat, data=mtcars, family=binomial)
-#' urs(model1,model2, model3,EXP=TRUE, Out="Outcome:VS", EST="OR")
+#' brs(model1,model2, model3,EXP=TRUE, Out="Outcome:VS", EST="OR")
 #' @export
 
-urs<-function(..., EXP=TRUE, EST, Out) {
+brs<-function(..., EXP=TRUE, EST, Out) {
   options(warn = -1)
   mods<-list(...)
   if(length(class(mods[[1]]))==1 & class(mods[[1]])=="list")
