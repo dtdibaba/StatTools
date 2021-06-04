@@ -2,7 +2,7 @@
 
 export(freq)
 export(regby)
-export(urs)
+export(brs)
 import(stats)
 importFrom(MASS,polr)
 importFrom(htmlTable,htmlTable)
