@@ -3,7 +3,7 @@
 #'  bivariate regression models. If you would like to examine the bivariate
 #'  associations between multiple potential confounders and an outcome variable,
 #'  you may want to run multiple bivariate models and summarize 
-#'  the results in one table. This function will help you with that.
+#'  the results in one table. This function helps you with that.
 #'  brs: stands for bivariate regression summary.
 #' @param ...  List of the bivariate regression models separated by comma  
 #' @param EXP  Logical, whether to exponentiate the estimate or not
