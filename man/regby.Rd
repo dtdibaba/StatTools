@@ -61,7 +61,7 @@ names. Default=TRUE.}
 \value{
 returns           
  \itemize{           
- knitr table}
+  straified regrresion table}
 }
 \description{
 This function helps to extract the important
@@ -94,7 +94,7 @@ Pred=c("Intercept",
  "X","Zb",
 "Zc", "Zd"),  colname=c("Strata", "Variable", "OR(95\%CIs)", "P-value" ),
 Factor=TRUE, Intercept=FALSE, EXP=TRUE)
-# Multiple linear regression analysis with a continuous and categorical 
+# Multiple Linear regression analysis with a continuous and categorical 
 # predictors, and intercept included
 regby(datain=data1, byVar='cat', frmlYX=formula(y~x+z), fam=guassian,
  Model="lm",Pred=c("Intercept", "X","Zb", "Zc", "Zd"), 
