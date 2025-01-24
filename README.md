@@ -1,13 +1,5 @@
-<<<<<<< HEAD
-﻿# regby {StatTools} 
-The StatTools is an R package that includes the regby, brs (for univariate regression), and freq functions. The regby function extracts summary results of stratified regression analyses. The freq function creates a frequency and percentage for a given categorical variable.
-||||||| parent of 817fc08 ("Few Style Changes")
-﻿# regby {StatTools} 
-The StatTools is an R package that includes the regby and freq functions. The regby function extracts summary results of stratified regression analyses. The freq function creates a frequency and percentage for a given categorical variable.
-=======
 # regby {StatTools} 
-The StatTools is an R package that includes the regby and freq functions. The regby function extracts summary results of stratified regression analyses. The freq function creates a frequency and percentage for a given categorical variable.
->>>>>>> 817fc08 ("Few Style Changes")
+The StatTools is an R package that includes the regby, brs (for univariate regression), and freq functions. The regby function extracts summary results of stratified regression analyses. The freq function creates a frequency and percentage for a given categorical variable.
 
 # Description
 
