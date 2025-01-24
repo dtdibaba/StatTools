@@ -4,7 +4,7 @@
 \alias{brs}
 \title{Summary table for bivariate regression models}
 \usage{
-brs(..., EXP = TRUE, EST, Out)
+brs(..., EXP  =  TRUE, EST, Out)
 }
 \arguments{
 \item{...}{List of the bivariate regression models separated by comma}
@@ -26,8 +26,8 @@ This function creates a summary table from multiple
 \examples{
 # Example
 set.seed(1234)
-model1<-glm(vs~gear, data=mtcars, family=binomial)
-model2<-glm(vs~hp, data=mtcars, family=binomial)
-model3<-glm(vs~drat, data=mtcars, family=binomial)
-brs(model1,model2, model3,EXP=TRUE, Out="Outcome:VS", EST="OR")
+model1 <- glm(vs ~ gear, data = mtcars, family = binomial)
+model2 <- glm(vs ~ hp, data = mtcars, family = binomial)
+model3 <- glm(vs ~ drat, data = mtcars, family = binomial)
+brs(model1,model2, model3,EXP = TRUE, Out = "Outcome:VS", EST = "OR")
 }

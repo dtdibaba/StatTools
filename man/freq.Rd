@@ -23,6 +23,6 @@ Provide the distinct level names as a list.
 \examples{
 #Example
 set.seed(1234)
-letter=list(sample(letters[1:5], 20, replace=TRUE))
-freq( letter, row=c("Letter"), colnames=c("A", "B", "C", "D", "E"))
+letter = list(sample(letters[1:5], 20, replace=TRUE))
+freq( letter, row = c("Letter"), colnames = c("A", "B", "C", "D", "E"))
 }
