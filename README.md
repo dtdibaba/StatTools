@@ -78,7 +78,7 @@ y = rbinom(100, 1, 0.5)
 data1 <- data.frame(x = x,z = z, Cat = Cat, y = y ) 
 
 
-#If Factor =  = TRUE include the level labels of the predictor as separate names.<br>
+# If Factor == TRUE include the level labels of the predictor as separate names.<br>
  regby(datain = data1, byVar = 'Cat',
  frmlYX = formula(y ~  x+z), 
  fam = binomial, 
